@@ -79,6 +79,27 @@ function draw () {
     ctx.strokeStyle = "yellow";
     ctx.lineWidth = 3;
     ctx.strokeRect(arrowX, arrowY, 50, 50);
+    
+    if(keyboxY <= 5) {
+        keyboardUp = false;
+    } else if(keyboxY >= 646) {
+        keyboardDown = false;
+    } else if(keyboxX >= 646) {
+        keyboardRight = false;
+    } else if(keyboxX <= 6) {
+        keyboardLeft = false;
+    }
+    
+     if(arrowY <= -55) {
+        arrowY = 700;
+    } else if(arrowY >= 700) {
+        arrowY = 0;
+    } else if(arrowX >= 700) {
+        arrowX = 0;
+    } else if(arrowX <= -55) {
+        arrowX = 700;
+    }
+    
     requestAnimationFrame(draw);
 }
 
@@ -106,16 +127,6 @@ function keyboard (event) {
     } else if(event.code === "KeyA") {
         keyboardLeft = true;
     }
-
-    if(keyboxY <= 5) {
-        keyboardUp = false;
-    } else if(keyboxY >= 646) {
-        keyboardDown = false;
-    } else if(keyboxX >= 646) {
-        keyboardRight = false;
-    } else if(keyboxX <= 6) {
-        keyboardLeft = false;
-    }
 }
 
 //Arrow
@@ -128,16 +139,6 @@ function arrowKey (event) {
         arrowkRight = true;
     } else if(event.code === "ArrowLeft") {
         arrowkLeft = true;
-    }
-
-    if(arrowY <= -55) {
-        arrowY = 700;
-    } else if(arrowY >= 700) {
-        arrowY = 0;
-    } else if(arrowX >= 700) {
-        arrowX = 0;
-    } else if(arrowX <= -55) {
-        arrowX = 700;
     }
 }
 
